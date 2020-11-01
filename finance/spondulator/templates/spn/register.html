@@ -1,0 +1,28 @@
+{% extends "spn/layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+
+        
+     <div>{{ form.errors }}</div>
+
+     <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+        <div>
+            {{form.username.label}}
+            {{form.username}}
+        </div>
+        <div>
+            {{form.password1.label}}
+            {{form.password1}}
+        </div>
+        <div>
+            {{form.password2.label}}
+            {{form.password2}}
+        </div>
+        <button class="btn btn-primary" type="submit">Register</button>
+    </form>
+{% endblock %}

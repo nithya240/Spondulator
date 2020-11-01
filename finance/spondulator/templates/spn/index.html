@@ -1,0 +1,52 @@
+{% extends "spn/layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+
+    <div>
+        <p>
+            Hello, {{request.user}}
+        </p>
+    </div>
+
+    {% for message in messages %}
+        <div>{{ message }}</div>
+    {% endfor %}
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>TOTAL</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td colspan="4"></td>
+                <td>xxxx</td>
+            </tr>
+        </tfoot>
+        <tbody>
+            <tr>
+                <td>x</td>
+                <td>y</td>
+                <td>z</td>
+                <td>a</td>
+                <td>b</td>
+            </tr>
+
+            <tr>
+                <td colspan="4">CASH</td>
+                <td>xxxx</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}
+
+

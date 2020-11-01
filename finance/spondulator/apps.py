@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class SpondulatorConfig(AppConfig):
-    name = 'spondulator'
+class SpnConfig(AppConfig):
+    name = 'spn'
