@@ -1,0 +1,18 @@
+{% extends "spondulator/layout.html" %}
+
+{% block title %}
+    Buy
+{% endblock %}
+
+{% block main %}
+
+    {% if message %}
+        {{message}}
+    {% endif %}
+
+    <form action="{% url 'buy' %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" placeholder="Buy">
+    </form>
+{% endblock %}

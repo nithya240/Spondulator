@@ -2,7 +2,7 @@ from django.contrib.auth import authenticate, login, logout
 
 from django.contrib.auth.forms import UserCreationForm
 from django.forms import inlineformset_factory
-from .forms import CreateUserForm
+from .forms import CreateUserForm, QuoteForm, BuyForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
@@ -11,13 +11,15 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse
 
+from .helpers import lookup, usd
+
 
 @login_required(login_url='login')
 def index(request):
     # If no user is signed in, return to login page:     
     # if not request.user.is_authenticated:
     #     return HttpResponseRedirect(reverse("login"))
-    return render(request, "spn/index.html")
+    return render(request, "spondulator/index.html")
 
 
 def login_view(request):
@@ -38,9 +40,9 @@ def login_view(request):
                 return redirect("index")
             else:
                 messages.info(request, "Username OR password is incorrect")
-                return render(request, "spn/login.html")
+                return render(request, "spondulator/login.html")
         else:
-            return render(request, "spn/login.html")
+            return render(request, "spondulator/login.html")
 
 
 def logout_view(request):
@@ -64,7 +66,45 @@ def register(request):
                 
                 return redirect("login")
         
-        return render(request, "spn/register.html", {
+        return render(request, "spondulator/register.html", {
             'form': form
+        })
+
+@login_required(login_url='login')
+def quote(request):
+    """Get stock quote."""
+    if request.method == "POST":
+
+        # Ensure quote symbol was submitted
+        # if not request.form.get("symbol"):
+        #     return apology("must provide symbol", 400)
+
+        form = QuoteForm(request.POST)
+
+        if form.is_valid():
+            stock_data = lookup(form.cleaned_data["symbol"])
+
+            # Ensure it is valid symbol
+            if not stock_data:
+                return render(request, "spondulator/quote.html", {
+                    "form": form,
+                    "message": "Invalid Symbol !!"
+                })
+
+            return render(request, "spondulator/quoted.html", {
+                "name": stock_data["name"], 
+                "symbol": stock_data["symbol"], 
+                "price": usd(stock_data["price"]),
+            })
+
+    else:
+        return render(request, "spondulator/quote.html", {
+            "form": QuoteForm()
+        })
+
+@login_required(login_url='login')
+def buy(request):
+    return render(request, "spondulator/buy.html", {
+            "form": BuyForm()
         })
 

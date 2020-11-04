@@ -1,0 +1,17 @@
+{% extends "spondulator/layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+
+    {% if message %}
+        {{message}}
+    {% endif %}
+    <form action="{% url 'quote' %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" placeholder="Quote">
+    </form>
+{% endblock %}
