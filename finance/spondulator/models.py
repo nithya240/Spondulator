@@ -30,3 +30,7 @@ class Purchase(models.Model):
     shares = models.IntegerField(null=True)
     price = models.FloatField(null=True)
     bought_at = models.DateTimeField(auto_now_add=True, null=True)
+
+    # Adding a Test Case 
+    def is_valid_purchase(self):
+        return self.shares > 0 and self.price > 0 and (len(self.stock) > 0 and len(self.stock) <= 5)
