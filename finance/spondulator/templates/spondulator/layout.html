@@ -13,7 +13,7 @@
         <!-- https://favicon.io/emoji-favicons/money-mouth-face/ -->
         <link href="{% static 'spondulator/favicon.ico' %}" rel="icon">
 
-        <link href="{% static 'spondulator/styles.css' %}" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'spondulator/style.css' %}">
 
         <title>Spondulator: {% block title %}{% endblock %}</title>
     </head>
@@ -21,11 +21,9 @@
     <body>
         <nav class="navbar navbar-expand-md navbar-light bg-light border">
             <a class="navbar-brand" href="/">
-                <span class="blue">S</span>
-                <span class="yellow">p</span>
-                <span class="red">o</span>
-                <span class="green">n</span> 
-                <span class="red">dulator</span>
+                <div>
+                    <span class="blue">Spo</span><span class="red">ndu</span><span class="yellow">la</span><span class="green">tor</span> 
+                </div>
             </a>
             <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar" data-toggle="collapse" type="button">
                 <span class="navbar-toggler-icon"></span>
@@ -35,8 +33,8 @@
                     <ul class="navbar-nav mr-auto mt-2">
                         <li class="nav-item"><a class="nav-link" href="{% url 'quote' %}">Quote</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'buy' %}">Buy</a></li>
-                        <li class="nav-item"><a class="nav-link" href="">Sell</a></li>
-                        <li class="nav-item"><a class="nav-link" href="">History</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'sell' %}">Sell</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'history' %}">History</a></li>
                         <li class="nav-item"><a class="nav-link" href="">Add Cash</a></li>
                     </ul>
                     <ul class="navbar-nav ml-auto mt-2">

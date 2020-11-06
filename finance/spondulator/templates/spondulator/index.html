@@ -22,28 +22,30 @@
                 <th>Symbol</th>
                 <th>Name</th>
                 <th>Shares</th>
-                <th>Price</th>
+                <th>Current Price</th>
                 <th>TOTAL</th>
             </tr>
         </thead>
         <tfoot>
             <tr>
                 <td colspan="4"></td>
-                <td>xxxx</td>
+                <td>{{total}}</td>
             </tr>
         </tfoot>
         <tbody>
-            <tr>
-                <td>x</td>
-                <td>y</td>
-                <td>z</td>
-                <td>a</td>
-                <td>b</td>
-            </tr>
+            {% for purchase in purchases %}
+                <tr>
+                    <td>{{ purchase.stock }}</td>
+                    <td>{{ purchase.name }}</td>
+                    <td>{{ purchase.total_shares }}</td>
+                    <td>{{ purchase.price }}</td>
+                    <td>{{ purchase.sum }}</td>
+                </tr>
+            {% endfor %}
 
             <tr>
-                <td colspan="4">CASH</td>
-                <td>xxxx</td>
+                <td colspan="4">CASH IN HAND</td>
+                <td>{{cash}}</td>
             </tr>
         </tbody>
     </table>
