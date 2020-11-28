@@ -1,0 +1,84 @@
+{% extends "spondulator/layout.html" %}
+
+{% block title %}
+    Company Info
+{% endblock %}
+
+{% block main %}
+
+    {% if message %}
+        {{message}}
+    {% endif %}
+    <form action="{% url 'company' %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" placeholder="Get Insights">
+    </form>
+
+    {% if flag %}
+        <br>
+        <div class="bg-light" style="height: 320px;">
+            <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
+                Sentiment Breakdown for Netflix.
+            </h5>
+            <div class="mx-auto" id="container" style="position: relative; height:20vh; width:40vw; display: flex; justify-content: center;">
+                <canvas id="pie-chart"></canvas>
+            </div>
+        </div>
+
+        <br><br>
+        <div class="row">
+            {% for article in articles %}
+                <div class="col-sm-4">
+                    <div class="card bg-light border-dark" >
+                        <div class="card-body">
+                            
+                            <p class="card-title" style="font-size: large;"><b>Title:</b> {{ article.title|force_escape }}</p>
+                            <p class="card-text"><b>Author:</b> {{article.author}}</p>
+                            <p class="card-text"><b>Sentiment:</b> {{article.sentiment|capfirst }}</p>
+                            <p class="card-text"><b>Publication Data:</b> {{article.posted|escape}}</p>
+                            <a href={{article.url|safe}} target="_blank" class="btn  btn-dark">View Article</a>
+                        </div> 
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        
+        <script>
+            console.log("ok");
+            var x = '{{positive|escapejs}}';
+            var y = '{{negative|escapejs}}';
+            var z = '{{neutral|escapejs}}';
+            console.log(x);
+            console.log(y);
+            console.log(z);
+
+            var config = {
+                type: 'doughnut',
+                data: {
+                    datasets: [{
+                        data: [x, y, z],
+                        backgroundColor: [
+                            '#ff0000', '#00ff00', '#0000ff'
+                        ],
+                        label: 'Sentiment Analysis'
+                    }],
+
+                    // These labels appear in the legend and in the tooltips when hovering different arcs
+                    labels: [
+                        'Positive',
+                        'Negative',
+                        'Neutral'
+                    ]
+                },
+                options: {
+                    responsive: true
+                }
+            };
+
+            var ctx = document.getElementById('pie-chart').getContext('2d');
+            window.myPie = new Chart(ctx, config);
+        </script>
+    {% endif %}
+
+{% endblock %}

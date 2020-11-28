@@ -1,5 +1,11 @@
 import requests
 import urllib.parse
+
+import json
+from ibm_watson import DiscoveryV1
+from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
+
+
 def lookup(symbol):
     """Look up quote for symbol."""
 
@@ -25,3 +31,29 @@ def lookup(symbol):
 def usd(value):
     """Format value as USD."""
     return f"${value:,.2f}"
+
+def lookInCloud():
+    authenticator = IAMAuthenticator('IRQ4Zx1CVhAIYrC-O6JKhW74GWP_9AaMWvv8bGSScZrL')
+    discovery = DiscoveryV1(
+        version='2020-11-26',
+        authenticator=authenticator
+    )
+
+    
+    #discovery.set_service_url('https://api.eu-gb.discovery.watson.cloud.ibm.com/instances/aa8947c6-0ecb-45d8-8335-15a09c1a77a9')
+    #discovery.set_service_url('https://api.eu-gb.discovery.watson.cloud.ibm.com/instances/aa8947c6-0ecb-45d8-8335-15a09c1a77a9/v1/environments/system/collections/news-en/query?version=2020-11-26&aggregation=filter%28enriched_title.entities.type%3A%3ACompany%29.term%28enriched_title.entities.text%29.timeslice%28crawl_date%2C1day%29.term%28enriched_text.sentiment.document.label%29&filter=IBM&deduplicate=false&highlight=true&passages=true&passages.count=12&query=')
+    discovery.set_service_url('https://api.eu-gb.discovery.watson.cloud.ibm.com/instances/3e86f8dd-e512-446f-8c24-e887f47c1ab9/v1/environments/system/collections/news-en/query?version=2018-12-03&count=1&aggregation=filter%28enriched_title.entities.type%3A%3ACompany%29.term%28enriched_title.entities.text%29.timeslice%28crawl_date%2C1day%29.term%28enriched_text.sentiment.document.label%29&filter=IBM&deduplicate=false&highlight=true&passages=true&passages.count=12&query=')
+
+    # We are going to access a system collection with English news
+    # You could change the language to news-de or news-es...
+    news_environment_id = 'system'
+    collection_id = 'news-en'
+
+    response = discovery.query(
+        news_environment_id,
+        collection_id,
+        query='nflx',
+        count=6,
+        deduplicate=True).get_result()
+
+    return response

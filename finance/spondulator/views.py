@@ -11,10 +11,13 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse
 
-from .helpers import lookup, usd
+from .helpers import lookup, usd, lookInCloud
 from .models import Cash, Purchase
 
 from django.db.models import Sum
+
+import json
+
 
 
 @login_required(login_url='login')
@@ -246,6 +249,69 @@ def history(request):
     purchases = request.user.purchases.all()
     return render(request, "spondulator/history.html", {
         "purchases": purchases
+    })
+
+
+def company(request):
+    if request.method == "POST":
+
+        form = QuoteForm(request.POST)
+        if form.is_valid():
+            # stock_data = lookup(form.cleaned_data["symbol"])
+
+            # # Ensure it is valid symbol
+            # if not stock_data:
+            #     return render(request, "spondulator/company.html", {
+            #         "form": form,
+            #         "message": "Invalid Symbol !!"
+            #     })
+
+            #company_info = lookInCloud(form.cleaned_data["symbol"])
+            company_info = lookInCloud()
+            title = json.dumps(company_info["results"][0]["title"], indent=2)
+
+            articles = company_info["results"]
+            #news_list = company_info["results"]
+            #news = [news_list[x:x+3] for x in range(0, len(news_list), 3)]
+            # news = [{}] * len(articles)
+
+            # obj = {}
+
+            positive = 0
+            negative = 0
+            neutral = 0
+            for article in articles:
+                article["posted"] = json.dumps(article.get("publication_date", None), indent=2).strip('"')
+                article["author"] = json.dumps(article.get("author", None), indent=2).strip('"')
+                article["sentiment"] = json.dumps(article["enriched_text"]["sentiment"]["document"].get("label", None), indent=2).strip('"')
+                article["title"] = json.dumps(article.get("title", None), indent=2).strip('"')
+                article["url"] = json.dumps(article.get("url", None), indent=2)
+
+                if article["author"] == "null":
+                    article["author"] = "None"
+
+                if article.get('sentiment') == "positive":
+                    positive += 1
+
+                elif article.get('sentiment') == "negative":
+                    negative += 1
+
+                else:
+                    neutral += 1
+               
+
+            return render(request, "spondulator/company.html", {
+                "form": form,
+                "flag": True,
+                "title": title,
+                "articles": articles,
+                "positive": positive,
+                "negative": negative,
+                "neutral": neutral
+            })
+            
+    return render(request, "spondulator/company.html", {
+        "form": QuoteForm(),
     })
 
 
