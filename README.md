@@ -1,10 +1,10 @@
 # Spondulator - Financial Education System
 
-Spondulator is a stock market learning tool designed and developed to help people make better financial decisions in life. By using this application, the users will not only be able to make the better financial decisions in life but will also gain the confidence to invest in the real-world stock market game and win the same.
+*Spondulator* is a **stock market learning tool** designed and developed to help people make better financial decisions in life. By using this application, the users will not only be able to make the better financial decisions in life but will also gain the confidence to invest in the real-world stock market game and win the same.
 
 ## Description:
 
- Spondulator provides a better way to learn the stock market by experiencing the same in the virtual environment, which seems to be intimidating to do so in the real world with the help of real money. The system gives some initial amount of virtual money to the users to play with, using which they can look up for the stock data, buy the stock, as well as sell it. The application also shows the calculated profit or loss on the total committed money. The IBM Watson Cloud technology is used to perform sentiment analysis about any company from different news sources which is then classified into positive, negative or neutral category in order to make an informed decision. This can also help to make an investment decision around the company’s future value. It is a distributed system which uses the third party API from the IEX cloud to fetch real-time stock value, as well as the IBM Watson Discovery service to get latest news about any company. 
+ *Spondulator* provides a better way to learn the stock market by experiencing the same in the virtual environment, which seems to be intimidating to do so in the real world with the help of real money. The system gives some initial amount of virtual money to the users to play with, using which they can look up for the stock data, buy the stock, as well as sell it. The application also shows the calculated profit or loss on the total committed money. The IBM Watson Cloud technology is used to perform sentiment analysis about any company from different news sources which is then classified into positive, negative or neutral category in order to make an informed decision. This can also help to make an investment decision around the company’s future value.
 
 ## Configuration and Running:
 
@@ -24,7 +24,21 @@ Once removing above files, run the following commands in your terminal:
 3. python manage.py runserver
 
 NOTE: You can visit to "/admin" app to see the models i.e. tables in our database and modify the same from the admin panel only which is a Django default app.
- 
+
+## Specifications: 
+
+This website complies with all the requirements of the **Advanced Software Engineering Final Project**.
+
+1. Spondulator is a **distributed system** which uses the *third party API* from the *IEX cloud* to fetch real-time stock value, as well as the *IBM Watson Discovery service* is used to get the latest news about any company and perform sentiment analysis on the same. 
+1. We have used  **Git** for Software Version Control. 
+1. We have used **Trello** as a software project management system.
+1. A dedicated testing strategy is used such as **Unit testing** as well as **Regression testing method**.
+1. **System documentation** is available on Github as well as shared Google Doc link is provided in the presentation and report.
+1. We have used **IBM Watson discovery pre-enriched open dataset.**
+
+## Summary: 
+
+The software is developed using **Agile Methodology** i.e. using both iterative as well as incremental fashion. In each iteration, our team gathered the necessary requirements and analyzed the same, followed by design, implementation as well as testing of the system in each phase. The software is created using the **Design Patterns** taught in the class such as **Gang of Four (GOF)** and **Grasp**, and thus it ensures the extensibility, maintanability as well  as the reusability of the software. We have also done the **Code Refactoring** in order to improve the overall design of the system while preserving its functionality. For instance, the code for the API's call that was written repeatatively, is now seprated and written in the different file i.e. helpers.py. 
 
 ## Development Tools:
 
@@ -36,8 +50,6 @@ NOTE: You can visit to "/admin" app to see the models i.e. tables in our databas
 
 * API's: IBM Watson Discovery service, IEX Cloud API
 
-* Tools:
-1. Project management tool: Trello
-2. Development Tool: Visual Studio Code, Git
+* Tools: Trello, Visual Studio Code, Git
 
 
