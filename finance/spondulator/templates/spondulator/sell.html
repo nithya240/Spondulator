@@ -12,6 +12,16 @@
 
     <form action="{% url 'sell' %}" method="post">
         {% csrf_token %}
+        <div class="container">
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="col-4" style="padding-right: 2rem;text-align: end; color:maroon; font-size: large; font-weight: bolder; font-family: Georgia, 'Times New Roman', Times, serif;">
+                    <h3>Would you like to Sell?</h3>
+                </div>
+                <div class="col-4"></div>
+            </div>
+        </div>
+        <br>
         
         <div class="form-group">
             <select class="form-control" name="symbol">
@@ -24,7 +34,15 @@
         <div class="form-group">
             <input autocomplete="off" class="form-control" min="0" name="shares" placeholder="Shares" type="number">
         </div>
-        <button class="btn btn-primary" type="submit">Sell</button>
-
+        <div class="container">
+            <div class="row">
+                <div class="col-5"></div>       
+        
+                <div class="col-3" style="padding-right: 6.3rem; padding-left: 1rem;">   
+                    <button class="btn btn-dark btn-block" type="submit">Sell</button>
+                </div>
+                <div class="col-4"></div>
+            </div>
+        </div>
     </form>
 {% endblock %}

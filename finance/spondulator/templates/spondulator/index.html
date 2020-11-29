@@ -6,9 +6,20 @@
 
 {% block main %}
 
+    <div class="container">
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4" style="padding-left: 1rem; padding-right: 1rem; color:maroon; font-size: large; font-weight: bolder; font-family: Georgia, 'Times New Roman', Times, serif;">
+                <h3>Dashboard</h3>
+            </div>
+            <div class="col-4"></div>
+        </div>
+    </div>
+    <br>
+
     <div>
-        <p>
-            Hello, {{request.user}}
+        <p style="font-size: large;">
+            Hello, <b style="color: maroon;"> {{request.user}} </b>
         </p>
     </div>
 

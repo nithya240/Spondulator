@@ -32,7 +32,7 @@ def usd(value):
     """Format value as USD."""
     return f"${value:,.2f}"
 
-def lookInCloud():
+def lookInCloud(symbol):
     authenticator = IAMAuthenticator('IRQ4Zx1CVhAIYrC-O6JKhW74GWP_9AaMWvv8bGSScZrL')
     discovery = DiscoveryV1(
         version='2020-11-26',
@@ -52,7 +52,7 @@ def lookInCloud():
     response = discovery.query(
         news_environment_id,
         collection_id,
-        query='nflx',
+        query=symbol,
         count=6,
         deduplicate=True).get_result()
 
