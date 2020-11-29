@@ -6,12 +6,40 @@
 
 {% block main %}
 
+    <div class="container">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-5" style="padding-left: 0rem; padding-right: 1rem;text-align: end; color:maroon; font-size: large; font-weight: bolder; font-family: Georgia, 'Times New Roman', Times, serif;">
+                <h3>Lookup for Stock Details</h3>
+            </div>
+            <div class="col-4"></div>
+        </div>
+    </div>
+    <br>
+
     {% if message %}
         {{message}}
     {% endif %}
     <form action="{% url 'quote' %}" method="post">
         {% csrf_token %}
-        {{ form }}
-        <input type="submit" placeholder="Quote">
+        <div class="container">
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="col-4 d-flex flex-row"  style="padding-right: 2.5rem; padding-left: 3rem;color: rgba(10, 32, 57, 0.87); font-size: medium; font-weight: bold; font-family: Georgia, 'Times New Roman', Times, serif;">
+                    {{ form }}
+                </div>
+                <div class="col-4"></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-5"></div>       
+        
+                <div class="col-3" style="padding-right: 5.3rem; padding-left: 3.2rem;">   
+                    <button class="btn btn-dark btn-block" style="margin-top:8%" type="submit">Quote</button>
+                </div>
+                <div class="col-4"></div>
+            </div>
+        </div>
     </form>
 {% endblock %}

@@ -63,7 +63,7 @@ def login_view(request):
             # Check if authentication successful
             if user is not None:
                 login(request, user)
-                messages.success(request, username + "has successfuly logged in.")
+                # messages.success(request, username + "has successfuly logged in.")
                 return redirect("index")
             else:
                 messages.info(request, "Username OR password is incorrect")
@@ -257,17 +257,17 @@ def company(request):
 
         form = QuoteForm(request.POST)
         if form.is_valid():
-            # stock_data = lookup(form.cleaned_data["symbol"])
+            stock_data = lookup(form.cleaned_data["symbol"])
 
-            # # Ensure it is valid symbol
-            # if not stock_data:
-            #     return render(request, "spondulator/company.html", {
-            #         "form": form,
-            #         "message": "Invalid Symbol !!"
-            #     })
+            # Ensure it is valid symbol
+            if not stock_data:
+                return render(request, "spondulator/company.html", {
+                    "form": form,
+                    "message": "Invalid Symbol !!"
+                })
 
-            #company_info = lookInCloud(form.cleaned_data["symbol"])
-            company_info = lookInCloud()
+            company_info = lookInCloud(form.cleaned_data["symbol"])
+
             title = json.dumps(company_info["results"][0]["title"], indent=2)
 
             articles = company_info["results"]
@@ -303,6 +303,7 @@ def company(request):
             return render(request, "spondulator/company.html", {
                 "form": form,
                 "flag": True,
+                "name": stock_data["name"],
                 "title": title,
                 "articles": articles,
                 "positive": positive,
@@ -315,3 +316,8 @@ def company(request):
     })
 
 
+# <form action="{% url 'company' %}" method="post">
+#         {% csrf_token %}
+#         {{ form }}
+#         <input type="submit" placeholder="Get Insights">
+#     </form>

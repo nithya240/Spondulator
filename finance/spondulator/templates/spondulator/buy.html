@@ -12,9 +12,32 @@
 
     <form action="{% url 'buy' %}" method="post">
         {% csrf_token %}
-        {{ form }}
-        <input type="submit" placeholder="Buy">
+        <div class="container">
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="col-4" style="padding-right: 2rem;text-align: end; color:maroon; font-size: large; font-weight: bolder; font-family: Georgia, 'Times New Roman', Times, serif;">
+                    <h3>Do you wan't to Buy?</h3>
+                </div>
+                <div class="col-4"></div>
+            </div>
+        </div>
+        <br>
+        <div style="padding-right: 2.5rem; padding-left: 3rem;color: rgba(10, 32, 57, 0.87); font-size: 1.1rem; font-weight: bold; font-family: Georgia, 'Times New Roman', Times, serif;">
+            {{ form.as_p }}
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-5"></div>       
+        
+                <div class="col-3" style="padding-right: 3.5rem; padding-left: 2.5rem;">   
+                    <button class="btn btn-dark btn-block" type="submit">Buy</button>
+                </div>
+                <div class="col-4"></div>
+            </div>
+          </div>
     </form>
 
-    <a href="{% url 'company' %}">Get insights about company</a>
+    <div style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: large; font-weight: bold; padding-top: 2%; padding-left: 3%;" class="m-3">
+        <a href="{% url 'company' %}">Get insights about Company</a>
+    </div>
 {% endblock %}
