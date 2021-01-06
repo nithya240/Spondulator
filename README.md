@@ -10,8 +10,8 @@
 
 As we know that, along with the normal metrics such as price and earnings, there are other factors that one should keep in mind in order to make an informed decision, factors such as sentiments about a company. Thus, users can go to the company route in order to get the insights about any company before buying the stock. 
 
-![img](images/s_insights1.png)
-![img](images/s_insights2.png)
+![img](images/s_insights1.PNG)
+![img](images/s_insights2.PNG)
 
 ## Configuration and Running:
 
