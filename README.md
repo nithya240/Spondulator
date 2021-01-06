@@ -5,6 +5,13 @@
 ## Description:
 
  *Spondulator* provides a better way to learn the stock market by experiencing the same in the virtual environment, which seems to be intimidating to do so in the real world with the help of real money. The system gives some initial amount of virtual money to the users to play with, using which they can look up for the stock data, buy the stock, as well as sell it. The application also shows the calculated profit or loss on the total committed money. The IBM Watson Cloud technology is used to perform sentiment analysis about any company from different news sources which is then classified into positive, negative or neutral category in order to make an informed decision. This can also help to make an investment decision around the company’s future value.
+ 
+## Sentiment Breakdown for any Company Output:
+
+As we know that, along with the normal metrics such as price and earnings, there are other factors that one should keep in mind in order to make an informed decision, factors such as sentiments about a company. Thus, users can go to the company route in order to get the insights about any company before buying the stock. 
+
+![img](images/s_insights1.png)
+![img](images/s_insights2.png)
 
 ## Configuration and Running:
 
