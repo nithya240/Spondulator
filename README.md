@@ -1,4 +1,4 @@
-# Spondulator - Financial Education System
+# Spondulator - The Financial Education System
 
 Spondulator is a stock market learning tool designed and developed to help people make better financial decisions in life. By using this application, the users will not only be able to make the better financial decisions in life but will also gain the confidence to invest in the real-world stock market game and win the same.
 
@@ -36,8 +36,6 @@ NOTE: You can visit to "/admin" app to see the models i.e. tables in our databas
 
 * API's: IBM Watson Discovery service, IEX Cloud API
 
-* Tools:
-1. Project management tool: Trello
-2. Development Tool: Visual Studio Code, Git
+* Tools: Trello, Visual Studio Code, Git
 
 
