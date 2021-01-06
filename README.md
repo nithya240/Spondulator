@@ -1,4 +1,4 @@
-# Spondulator - Financial Education System
+# Spondulator - The Financial Education System
 
 *Spondulator* is a **stock market learning tool** designed and developed to help people make better financial decisions in life. By using this application, the users will not only be able to make the better financial decisions in life but will also gain the confidence to invest in the real-world stock market game and win the same.
 
