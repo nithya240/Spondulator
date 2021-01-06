@@ -13,6 +13,12 @@ As we know that, along with the normal metrics such as price and earnings, there
 ![img](images/s_insights1.PNG)
 ![img](images/s_insights2.PNG)
 
+## System Architecture:
+
+![img](images/System Architecture.PNG)
+
+The system provides a simple Web UI via which users can manage the portfolios of stocks. After collecting the User input, the system processes the data which is then routed to the backend server. Thereafter on the server side, the backend server stores then stock information in a SQLite3 database for easy retrieval. The backend server uses Watson Discovery service to find the information about a specific company, which then queries the Watson News collection for articles related to the company. The IEX Cloud API is also queried by the server to find the actual stock price in real time for a given company. Lastly, the news and sentiment of any company, as well as stock price are all returned and rendered in the web app to the user.
+
 ## Configuration and Running:
 
 Steps to create new Django Project and new app inside it:
